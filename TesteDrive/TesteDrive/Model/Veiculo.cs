@@ -5,9 +5,9 @@ using System.Text;
 
 namespace TesteDrive.Model
 {
-    public class Carro
+    public class Veiculo
     {
-        public Carro()
+        public Veiculo()
         {
             Acessorios = new HashSet<Acessorio>();
         }

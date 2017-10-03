@@ -33,13 +33,15 @@ namespace TesteDrive.Model
         public bool Ativo
         {
             get { return ativo; }
-            set {
+            set
+            {
                 if (value)
                     this.Nome = "ABS ATIVo";
 
-                ativo = value; }
+                ativo = value;
+            }
         }
-        
+
 
     }
 }

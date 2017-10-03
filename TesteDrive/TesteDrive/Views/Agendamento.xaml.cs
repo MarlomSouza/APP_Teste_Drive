@@ -12,8 +12,8 @@ namespace TesteDrive.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Agendamento : ContentPage
     {
-        public Carro Veiculo { get; private set; }
-        public Agendamento(Carro veiculo)
+        public Veiculo Veiculo { get; private set; }
+        public Agendamento(Veiculo veiculo)
         {
             InitializeComponent();
             this.Veiculo = veiculo;
