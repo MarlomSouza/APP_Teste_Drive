@@ -13,6 +13,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Model\Acessorio.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Agendamento.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Veiculo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DetalheViewModel.cs" />

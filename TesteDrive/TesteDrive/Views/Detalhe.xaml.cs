@@ -19,14 +19,15 @@ namespace TesteDrive.Views
         public DetalheViewModel DetalheViewModel { get; set; }
         public Detalhe(Veiculo carro)
         {
-            InitializeComponent();
-            DetalheViewModel = new DetalheViewModel(carro);
-            this.Title = carro.Nome;
+                InitializeComponent();
+                DetalheViewModel = new DetalheViewModel(carro);
+                this.Title = carro.Nome;
 
-            this.BindingContext = DetalheViewModel;
+                this.BindingContext = DetalheViewModel;
+            
         }
 
-        
+
 
         private void botaoProximo_Clicked(object sender, EventArgs e)
         {

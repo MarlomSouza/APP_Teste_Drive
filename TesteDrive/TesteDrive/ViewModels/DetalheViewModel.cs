@@ -11,6 +11,7 @@ namespace TesteDrive.ViewModels
         {
             this.Veiculo = veiculo;
             CriarObjetos();
+            this.valorTotal = 0;
         }
 
         public Veiculo Veiculo { get; set; }
@@ -18,34 +19,85 @@ namespace TesteDrive.ViewModels
         public Acessorio ABS { get; set; }
         public Acessorio SOM { get; set; }
 
-        private Acessorio kilometragem;
-        public Acessorio Kilometragem
+        public Acessorio Kilometragem { get; set; }
+
+        private bool temKilometragem;
+
+        public bool TemKilometragem
         {
-            get
-            {
-                return this.kilometragem;
-            }
+            get { return temKilometragem; }
             set
             {
-                OnPropertyChanged(nameof(Kilometragem.Nome));
-                this.kilometragem = value;
+                temKilometragem = value;
+                CalcularValorTotal(Kilometragem, value);
             }
         }
 
-        private int valorTotal;
+        private bool temABS;
 
-        public int ValorTotal
+        public bool TemABS
         {
-            get { return valorTotal; }
-            set { valorTotal = value; }
+            get { return temABS; }
+            set
+            {
+                temABS = value;
+                CalcularValorTotal(ABS, value);
+            }
+        }
+        private bool temSOM;
+
+        public bool TemSom
+        {
+            get { return temSOM; }
+            set
+            {
+                temSOM = value;
+                CalcularValorTotal(SOM, value);
+            }
+        }
+
+        private decimal valorTotal;
+
+        public string ValorTotal
+        {
+            get
+            {
+                return valorTotal.ToString("F2");
+            }
+            set
+            {
+                try
+                {
+                    valorTotal = Convert.ToDecimal(value);
+                }
+                catch (Exception e)
+                {
+
+                    throw;
+                }
+            }
         }
 
 
         private void CriarObjetos()
         {
-            this.ABS = new Acessorio("ABS", 100, true);
-            this.SOM = new Acessorio("SOM", 100, true);
-            this.Kilometragem = new Acessorio("Ilimitada", 100, false);
+            this.ABS = new Acessorio("ABS", 220, true);
+            this.SOM = new Acessorio("SOM", 110, true);
+            this.Kilometragem = new Acessorio("Ilimitada", 100, true);
+        }
+
+
+        private void CalcularValorTotal(Acessorio acessorio, bool ativo)
+        {
+            if (ativo)
+                this.valorTotal += acessorio.Valor;
+            else
+                this.valorTotal -= acessorio.Valor;
+
+            if (valorTotal < 0)
+                this.valorTotal = 0;
+
+            OnPropertyChanged(nameof(ValorTotal));
         }
     }
 }
