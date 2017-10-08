@@ -29,6 +29,6 @@
                 </TableSection>
             </TableRoot>
         </TableView>
-        <Button Text="Agendar" VerticalOptions="End" x:Name="Agendar" Clicked="Agendar_Clicked"></Button>
+        <Button Text="Agendar" VerticalOptions="End" x:Name="Agendar" Command="{Binding Agendar}"></Button>
     </StackLayout>
 </ContentPage>

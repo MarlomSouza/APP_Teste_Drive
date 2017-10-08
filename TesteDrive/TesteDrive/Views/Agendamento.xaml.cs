@@ -24,9 +24,19 @@ namespace TesteDrive.Views
             this.BindingContext = AgendamentoViewModel;
         }
 
-        private void Agendar_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            DisplayAlert("AGENDAR", string.Format("AGENDAR O AGENDAMENTO {0}{1}{2}", AgendamentoViewModel.Agendamento.Nome, AgendamentoViewModel.Agendamento.Veiculo.Nome, AgendamentoViewModel.Agendamento.Email), "CANCELAR");
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Model.Agendamento>(this, "Agendar", (agendamento) =>
+            {
+                DisplayAlert("AGENDAR", string.Format("AGENDAR O AGENDAMENTO {0}{1}{2}", agendamento.Nome, agendamento.Veiculo.Nome, agendamento.Email), "CANCELAR");
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Model.Agendamento>(this, "Agendar");
         }
     }
 }

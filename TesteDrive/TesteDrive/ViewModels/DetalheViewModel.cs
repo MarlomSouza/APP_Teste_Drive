@@ -13,7 +13,7 @@ namespace TesteDrive.ViewModels
         {
             this.Veiculo = veiculo;
             CriarObjetos();
-            proximoComando = new Command((msg) =>
+            proximoComando = new Command(() =>
             {
                 MessagingCenter.Send<Veiculo>(veiculo, "Proximo");
             });
