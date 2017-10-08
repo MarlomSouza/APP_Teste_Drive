@@ -8,7 +8,7 @@ namespace TesteDrive.ViewModels
 {
     public class ListagemViewModel : BaseViewModel
     {
-
+        private string URL_GET_VEICULOS = "http://aluracar.herokuapp.com/";
 
         private List<Veiculo> veiculo;
 
@@ -39,6 +39,10 @@ namespace TesteDrive.ViewModels
                 new Veiculo() { Nome = "Carro 2", Preco = "50.21" },
                 new Veiculo() { Nome = "Carro 3", Preco = "30" },
             };
+
+
+
+
         }
 
 

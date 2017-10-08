@@ -12,6 +12,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Business\AgendamentoBusiness.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Business\BaseBusiness.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Acessorio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Agendamento.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Veiculo.cs" />
