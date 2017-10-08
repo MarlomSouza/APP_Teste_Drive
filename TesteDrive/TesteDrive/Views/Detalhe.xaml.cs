@@ -19,19 +19,25 @@ namespace TesteDrive.Views
         public DetalheViewModel DetalheViewModel { get; set; }
         public Detalhe(Veiculo carro)
         {
-                InitializeComponent();
-                DetalheViewModel = new DetalheViewModel(carro);
-                this.Title = carro.Nome;
-
-                this.BindingContext = DetalheViewModel;
-            
+            InitializeComponent();
+            DetalheViewModel = new DetalheViewModel(carro);
+            this.Title = carro.Nome;
+            this.BindingContext = DetalheViewModel;
         }
 
-
-
-        private void botaoProximo_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            Navigation.PushAsync(new Agendamento(Veiculo));
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (veiculo) =>
+            {
+                Navigation.PushAsync(new Agendamento(veiculo));
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "Proximo");
         }
     }
 }

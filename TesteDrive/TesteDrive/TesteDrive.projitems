@@ -15,8 +15,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Acessorio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Agendamento.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Veiculo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AgendamentoViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DetalheViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ListagemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Agendamento.xaml.cs">
       <DependentUpon>Agendamento.xaml</DependentUpon>
       <SubType>Code</SubType>

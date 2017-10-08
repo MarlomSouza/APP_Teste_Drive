@@ -2,32 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TesteDrive.Views.Agendamento"
-            Title="{Binding Veiculo.Nome}">
+            Title="{Binding Agendamento.Veiculo.Nome}">
     <StackLayout>
         <TableView>
             <TableRoot>
                 <TableSection Title="Seus dados">
-                    <EntryCell Label="Nome:"></EntryCell>
-                    <EntryCell Label="Fone:" Keyboard="Telephone"></EntryCell>
-                    <EntryCell Label="Email:" Keyboard="Email"></EntryCell>
+                    <EntryCell Label="Nome:" Text="{Binding Agendamento.Nome}"></EntryCell>
+                    <EntryCell Label="Fone:" Keyboard="Telephone" Text="{Binding Agendamento.Telefone}"></EntryCell>
+                    <EntryCell Label="Email:" Keyboard="Email" Text="{Binding Agendamento.Email}"></EntryCell>
                 </TableSection>
                 <TableSection Title="Agendamento">
 
                     <ViewCell>
-                        <StackLayout Orientation="Vertical" >
-                            <Label Text="Data:" Margin="12,0,0,0"></Label>
-                            <DatePicker></DatePicker>
+                        <StackLayout Orientation="Horizontal" >
+                            <Label Text="Data:" Margin="12,0,0,0" VerticalTextAlignment="Center"></Label>
+                            <DatePicker Date="{Binding Agendamento.DataAgendamento}"></DatePicker>
                         </StackLayout>
 
                     </ViewCell>
                     <ViewCell>
-                        <StackLayout Orientation="Vertical">
-                            <Label Text="Hora:" Margin="12,0,0,0"></Label>
-                            <TimePicker></TimePicker>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Hora:" Margin="12,0,0,0" VerticalTextAlignment="Center"></Label>
+                            <TimePicker Time="{Binding Agendamento.HoraAgendamento}"></TimePicker>
                         </StackLayout>
                     </ViewCell>
                 </TableSection>
             </TableRoot>
         </TableView>
+        <Button Text="Agendar" VerticalOptions="End" x:Name="Agendar" Clicked="Agendar_Clicked"></Button>
     </StackLayout>
 </ContentPage>

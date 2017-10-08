@@ -4,7 +4,7 @@
              x:Class="TesteDrive.Views.Listagem"
              Title="Listagem Veiculos">
 
-    <ListView x:Name="ListaNomes" ItemsSource="{Binding Veiculos}" Margin="25" ItemTapped="ListaNomes_ItemTapped">
+    <ListView x:Name="ListaNomes" ItemsSource="{Binding Veiculos}" Margin="25" SelectedItem="{Binding VeiculoSelecionado}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

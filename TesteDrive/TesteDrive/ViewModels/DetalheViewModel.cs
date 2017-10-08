@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 using TesteDrive.Model;
+using Xamarin.Forms;
 
 namespace TesteDrive.ViewModels
 {
@@ -11,7 +13,10 @@ namespace TesteDrive.ViewModels
         {
             this.Veiculo = veiculo;
             CriarObjetos();
-            this.valorTotal = 0;
+            proximoComando = new Command((msg) =>
+            {
+                MessagingCenter.Send<Veiculo>(veiculo, "Proximo");
+            });
         }
 
         public Veiculo Veiculo { get; set; }
@@ -84,6 +89,14 @@ namespace TesteDrive.ViewModels
             this.ABS = new Acessorio("ABS", 220, true);
             this.SOM = new Acessorio("SOM", 110, true);
             this.Kilometragem = new Acessorio("Ilimitada", 100, true);
+        }
+
+        private ICommand proximoComando;
+
+        public ICommand ProximoComando
+        {
+            get { return proximoComando; }
+            set { proximoComando = value; }
         }
 
 
