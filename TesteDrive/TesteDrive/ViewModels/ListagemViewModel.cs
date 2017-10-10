@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
+using TesteDrive.Business;
 using TesteDrive.Model;
 using Xamarin.Forms;
 
@@ -10,12 +13,17 @@ namespace TesteDrive.ViewModels
     {
         private string URL_GET_VEICULOS = "http://aluracar.herokuapp.com/";
 
-        private List<Veiculo> veiculo;
+        private VeiculoBusiness busines;
 
-        public List<Veiculo> Veiculos
+        private ObservableCollection<Veiculo> veiculo;
+        public ObservableCollection<Veiculo> Veiculos
         {
             get { return veiculo; }
-            set { veiculo = value; }
+            set
+            {
+                veiculo = value;
+                OnPropertyChanged();
+            }
         }
 
         private Veiculo veiculoSelecionado;
@@ -27,26 +35,34 @@ namespace TesteDrive.ViewModels
             {
                 veiculoSelecionado = value;
                 if (veiculoSelecionado != null)
-                    MessagingCenter.Send<Veiculo>(veiculoSelecionado, "VeiculoSelecionado");
+                    MessagingCenter.Send(veiculoSelecionado, "VeiculoSelecionado");
             }
         }
 
-        public ListagemViewModel()
+        private bool aguarde;
+
+        public bool Aguarde
         {
-            this.veiculo = new List<Veiculo>
+            get { return aguarde; }
+            set
             {
-                new Veiculo() { Nome = "Carro 1", Preco = "20" },
-                new Veiculo() { Nome = "Carro 2", Preco = "50.21" },
-                new Veiculo() { Nome = "Carro 3", Preco = "30" },
-            };
-
-
-
-
+                aguarde = value;
+                OnPropertyChanged();
+            }
         }
 
 
+        public ListagemViewModel()
+        {
+            Aguarde = true;
+            this.busines = new VeiculoBusiness(URL_GET_VEICULOS);
 
+            busines.Obter().ContinueWith(d =>
+            {
+                Veiculos = d.Result;
+                this.Aguarde = false;
+            }, TaskContinuationOptions.OnlyOnRanToCompletion);
 
+        }
     }
 }

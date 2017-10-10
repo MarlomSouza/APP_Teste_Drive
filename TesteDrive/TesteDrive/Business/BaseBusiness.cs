@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TesteDrive.Business
 {
@@ -15,7 +17,7 @@ namespace TesteDrive.Business
         }
 
         public abstract void Salvar(T t);
-        public abstract void Obter();
+        public abstract Task<ObservableCollection<T>> Obter();
         public abstract void Obter(string id);
         public abstract void Excluir(string id);
 

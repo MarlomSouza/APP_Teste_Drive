@@ -75,9 +75,8 @@ namespace TesteDrive.ViewModels
                 {
                     valorTotal = Convert.ToDecimal(value);
                 }
-                catch (Exception e)
+                catch
                 {
-
                     throw;
                 }
             }

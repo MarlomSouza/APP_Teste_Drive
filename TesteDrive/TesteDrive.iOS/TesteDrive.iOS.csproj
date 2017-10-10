@@ -152,6 +152,12 @@
     </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TesteDrive.Android\TesteDrive.Android.csproj">
+      <Project>{B9FDB5A9-11EE-4588-8FAB-D44B36938BCF}</Project>
+      <Name>TesteDrive.Android</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\TesteDrive\TesteDrive.projitems" Label="Shared" Condition="Exists('..\TesteDrive\TesteDrive.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
