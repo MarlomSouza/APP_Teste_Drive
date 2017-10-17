@@ -7,9 +7,9 @@
         <TableView>
             <TableRoot>
                 <TableSection Title="Seus dados">
-                    <EntryCell Label="Nome:" Text="{Binding Agendamento.Nome}"></EntryCell>
-                    <EntryCell Label="Fone:" Keyboard="Telephone" Text="{Binding Agendamento.Telefone}"></EntryCell>
-                    <EntryCell Label="Email:" Keyboard="Email" Text="{Binding Agendamento.Email}"></EntryCell>
+                    <EntryCell Label="Nome:" Text="{Binding Agendamento.Nome}" BindingContext="{Binding Valido}"></EntryCell>
+                    <EntryCell Label="Fone:" Keyboard="Telephone" Text="{Binding Agendamento.Telefone}" BindingContext="{Binding Valido}"></EntryCell>
+                    <EntryCell Label="Email:" Keyboard="Email" Text="{Binding Agendamento.Email}" BindingContext="{Binding Valido}"></EntryCell>
                 </TableSection>
                 <TableSection Title="Agendamento">
 

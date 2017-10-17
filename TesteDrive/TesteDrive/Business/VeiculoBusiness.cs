@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using TesteDrive.Model;
@@ -32,11 +33,9 @@ namespace TesteDrive.Business
             throw new NotImplementedException();
         }
 
-        public override void Salvar(Veiculo t)
+        public override Task<HttpResponseMessage> Salvar(Veiculo t)
         {
-            //httpcliente.PostAsync()
+            throw new NotImplementedException();
         }
-
-      
     }
 }

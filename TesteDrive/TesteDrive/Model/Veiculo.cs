@@ -13,7 +13,7 @@ namespace TesteDrive.Model
         }
 
         public string Nome { get; set; }
-      
+
         private ICollection<Acessorio> acessorios;
 
         public ICollection<Acessorio> Acessorios
@@ -30,8 +30,13 @@ namespace TesteDrive.Model
         private decimal preco;
         public string Preco
         {
-            get { return "R$" + string.Format(this.preco.ToString("F2")); }
+            get { return this.preco.ToString(); }
             set { preco = Convert.ToDecimal(value); }
+        }
+
+        public string PrecoFormatado
+        {
+            get { return "R$" + string.Format(this.preco.ToString("F2")); }
         }
 
         public decimal ValorTotal()

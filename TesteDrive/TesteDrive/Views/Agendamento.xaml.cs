@@ -27,9 +27,23 @@ namespace TesteDrive.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Model.Agendamento>(this, "Agendar", (agendamento) =>
+            MessagingCenter.Subscribe<Model.Agendamento>(this, "Agendar", async (agendamento) =>
+             {
+                 var resultado = await DisplayAlert("AGENDAR", string.Format("AGENDAR O AGENDAMENTO {0}{1}{2}", agendamento.Nome, agendamento.Veiculo.Nome, agendamento.Email), "OK" ,"CANCELAR");
+                 if (resultado)
+                     this.AgendamentoViewModel.SalvarAgendamento();
+
+
+             });
+
+            MessagingCenter.Subscribe<Model.Agendamento>(this, "SucessoAgendamento", (agendamento) =>
             {
-                DisplayAlert("AGENDAR", string.Format("AGENDAR O AGENDAMENTO {0}{1}{2}", agendamento.Nome, agendamento.Veiculo.Nome, agendamento.Email), "CANCELAR");
+                DisplayAlert("Agendado com sucesso", string.Format("foi agendado"), "OK");
+            });
+
+            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaAgendamento", (value) =>
+            {
+                DisplayAlert("Falha", "Falhou a agendar tente novamente mais tarde", "OK");
             });
         }
 
@@ -37,6 +51,8 @@ namespace TesteDrive.Views
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<Model.Agendamento>(this, "Agendar");
+            MessagingCenter.Unsubscribe<Model.Agendamento>(this, "SucessoAgendamento");
+            MessagingCenter.Unsubscribe<ArgumentException>(this, "FalhaAgendamento");
         }
     }
 }
